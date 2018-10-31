@@ -46,7 +46,7 @@ class Notes extends React.Component {
                     </div>                    
                     <h2>Your Notes:</h2>
                     <div className='notes-container'>
-                        {this.state.filteredNotes.length > 0 || this.state.filteredNotes === null ? (
+                        {this.state.filteredNotes ? (
                             this.state.filteredNotes.map(note => {
                                 return (
                                     <NavLink to={`/note/${note.id}`} className='note-container' key={note.id}>
