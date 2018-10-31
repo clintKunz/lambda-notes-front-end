@@ -8,7 +8,7 @@ class CreateNote extends React.Component {
         this.state = {
             title: '',
             content: '',
-            id: null
+            user_id: 1
         }
     }
     handleInput = (event, props) => {
