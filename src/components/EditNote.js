@@ -8,9 +8,9 @@ class EditNote extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            _id: null,
+            id: null,
             title: '',
-            textBody: ''
+            content: ''
         }
     }
 
@@ -18,11 +18,11 @@ class EditNote extends React.Component {
     componentDidMount() {
         this.props.fetchNotes();
         setTimeout(() => {
-        const note = this.props.notes.find(note => note._id == this.props.match.params.id);
+        const note = this.props.notes.find(note => note.id == this.props.match.params.id);
         this.setState({
-            _id: note._id,
+            id: note.id,
             title: note.title,
-            textBody: note.textBody
+            content: note.content
         })
         }, 1000);
     }
@@ -38,7 +38,7 @@ class EditNote extends React.Component {
             <div className='main-view'>
                 <h2>Edit Note:</h2>
                 <input type="text" className='title' name="title" value={this.state.title} onChange={this.handleInput} />
-                <textarea className="text-body" name="textBody" value={this.state.textBody} onChange={this.handleInput} />
+                <textarea className="text-body" name="content" value={this.state.content} onChange={this.handleInput} />
                 <button><NavLink to={`/`} onClick={() => this.props.editNote(this.state)} className="button">Update</NavLink></button>
             </div>
         )

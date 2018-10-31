@@ -22,7 +22,7 @@ class Notes extends React.Component {
 
     searchHandler = event => {
         const notes = this.props.notes.filter(note => {
-            if (note.title.includes(event.target.value) || note.textBody.includes(event.target.value)) {
+            if (note.title.includes(event.target.value) || note.content.includes(event.target.value)) {
                 return note;
             } return null;
         });
@@ -49,18 +49,18 @@ class Notes extends React.Component {
                         {this.state.filteredNotes.length > 0 ? (
                             this.state.filteredNotes.map(note => {
                                 return (
-                                    <NavLink to={`/note/${note._id}`} className='note-container' key={note._id}>
+                                    <NavLink to={`/note/${note.id}`} className='note-container' key={note.id}>
                                         <h3>{note.title}</h3>
-                                        <p>{note.textBody}</p>
+                                        <p>{note.content}</p>
                                     </NavLink>
                                 )
                             })
                         ) : (
                             this.props.notes.map(note => {
                                 return (
-                                    <NavLink to={`/note/${note._id}`} className='note-container' key={note._id}>
+                                    <NavLink to={`/note/${note.id}`} className='note-container' key={note.id}>
                                         <h3>{note.title}</h3>
-                                        <p>{note.textBody}</p>
+                                        <p>{note.content}</p>
                                     </NavLink>
                                 )
                             })

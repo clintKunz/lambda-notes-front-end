@@ -16,7 +16,7 @@ export const NOTES_SORTED = 'NOTES_SORTED';
 export const sortNotes = () => dispatch => {
   dispatch({ type: SORTING_NOTES });
 
-  axios.get('https://killer-notes.herokuapp.com/note/get/all')
+  axios.get('https://lamdba-notes-backend.herokuapp.com/api/notes')
     .then(res => {
       console.log(res.data.sort(function (a, b) {
         var titleA = a.title.toUpperCase();
@@ -39,7 +39,7 @@ export const sortNotes = () => dispatch => {
 export const fetchNotes = () => dispatch => {
   dispatch({ type: FETCHING_NOTES });
 
-  axios.get('https://killer-notes.herokuapp.com/note/get/all')
+  axios.get('https://lamdba-notes-backend.herokuapp.com/api/notes')
     .then(res => {
       console.log('fetch notes res', res);
       dispatch({ type: NOTES_FETCHED, payload: res.data })
@@ -53,7 +53,7 @@ export const fetchNotes = () => dispatch => {
 export const newNote = note => dispatch => {
   dispatch ({ type: ADDING_NOTE });
 
-  axios.post('https://killer-notes.herokuapp.com/note/create', note)
+  axios.post('https://lamdba-notes-backend.herokuapp.com/api/create', note)
     .then(res => {
         // axios.put(`https://killer-notes.herokuapp.com/note/edit/${res.data.success}`, note)
         //     .then(res => {
@@ -73,7 +73,7 @@ export const newNote = note => dispatch => {
 export const deleteNote = id => dispatch => {
   dispatch ({ type: DELETING_NOTE });
 
-  axios.delete(`https://killer-notes.herokuapp.com/note/delete/${id}`)
+  axios.delete(`https://lamdba-notes-backend.herokuapp.com/api/note/${id}`)
   .then(res => {
     console.log('delete action', res);
     dispatch({ type: NOTE_DELETED, payload: res.data })
@@ -86,7 +86,7 @@ export const deleteNote = id => dispatch => {
 export const editNote = (updatedNote) => dispatch => {
   dispatch ({ type: EDITING_NOTE });
 
-  axios.put(`https://killer-notes.herokuapp.com/note/edit/${updatedNote._id}`, updatedNote)
+  axios.put(`https://lamdba-notes-backend.herokuapp.com/api/note/${updatedNote.id}`, updatedNote)
   .then(res => {
     dispatch({ type: NOTE_EDITED, payload: res.data })
   })

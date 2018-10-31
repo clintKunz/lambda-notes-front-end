@@ -7,8 +7,8 @@ class CreateNote extends React.Component {
         super();
         this.state = {
             title: '',
-            textBody: '',
-            _id: null
+            content: '',
+            id: null
         }
     }
     handleInput = (event, props) => {
@@ -22,7 +22,7 @@ class CreateNote extends React.Component {
             <div className="main-view">
                 <h2>Create New Note:</h2>
                 <input className="title" type="text" name="title" placeholder="Note Title" onChange={this.handleInput} />
-                <textarea className="text-body" name="textBody" placeholder="Note Content" onChange={this.handleInput} />
+                <textarea className="text-body" name="content" placeholder="Note Content" onChange={this.handleInput} />
                 <button><NavLink to='/' onClick={() => this.props.addNote(this.state)} className="button">Save</NavLink></button>
             </div>
         )
