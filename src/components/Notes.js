@@ -9,7 +9,7 @@ class Notes extends React.Component {
     constructor() {
         super();
         this.state = {
-            filteredNotes: []
+            filteredNotes: null
         }
     }
 
