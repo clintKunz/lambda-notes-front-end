@@ -2,6 +2,7 @@ import { FETCHING_NOTES, NOTES_FETCHED, FETCH_ERROR, ADDING_NOTE, NOTE_ADDED, DE
 
 const initialState = {
    notes: [],
+   numberOfNotes: 0,
    fetchingNotes: false,
    addingNote: false,
    updatingNote: false,
@@ -18,7 +19,8 @@ export const noteReducer = (state = initialState, action) => {
     case NOTES_FETCHED:
       return Object.assign({}, state, {
         notes: action.payload,
-        fetchingNotes: false
+        fetchingNotes: false,
+        numberOfNotes: action.payload.length,
       });
     case FETCH_ERROR:
       return Object.assign({}, state, {

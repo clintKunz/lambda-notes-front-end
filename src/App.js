@@ -65,6 +65,7 @@ const mapStateToProps = state => {
   return {
     notes: state.notes,
     fetchingNotes: state.fetchingNotes,
+    numberOfNotes: state.numberOfNotes
   }
 }
 
