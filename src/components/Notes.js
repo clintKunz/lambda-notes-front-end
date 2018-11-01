@@ -22,7 +22,12 @@ class Notes extends React.Component {
 
     searchHandler = event => {
         const notes = this.props.notes.filter(note => {
-            if (note.title.includes(event.target.value) || note.content.includes(event.target.value)) {
+
+            const title = note.title.toLowerCase();
+            const content = note.content.toLowerCase();
+            const searchTerm = event.target.value.toLowerCase();
+
+            if (title.includes(searchTerm) || content.includes(searchTerm)) {
                 return note;
             } return null;
         });
