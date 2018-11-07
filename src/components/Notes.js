@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'; 
 import { connect } from 'react-redux';
 import { fetchNotes, notesUpdated, sortNotes } from '../actions';
+import showdown from 'showdown';
 
 class Notes extends React.Component {
     constructor() {
@@ -11,7 +12,8 @@ class Notes extends React.Component {
         this.state = {
             filteredNotes: null,
             noteBegin: 0,
-            noteEnd: 8
+            noteEnd: 8,
+            currentPage: 1
         }
     }
 
@@ -22,40 +24,43 @@ class Notes extends React.Component {
         }
     }
 
-    paginationClick() {
-        function pagination() {
-            let notesBegin = 0; //state
-            let notesEnd = 8; //state
-            const notesAllowed = 9;
-            const numberOfNotes = 10; 
-            const click = 'right';
-                  //9 notes per page, initial state noteBegin and noteEnd reflect this
-            const pages = Math.ceil(numberOfNotes/notesAllowed);
-            console.log('pages', pages);
+    //attempting to use a markdown converter so that notes retain line breaks and other nuances when displaying notes
+    markdownConverter = new showdown.Converter({emoji: true, headerLevelStart: 4, simplifiedAutoLink: true, tasklists: true});
+
+    // paginationClick() {
+    //     function pagination() {
+    //         let notesBegin = this.state.notesBegin; //state
+    //         let notesEnd = this.state.notesEnd; //state
+    //         const click = event.target.value; //'left' or 'right'
+    //         const notesAllowed = 9;
+    //         const numberOfNotes = this.props.numberOfNotes; 
+    //               //9 notes per page, initial state noteBegin and noteEnd reflect this
+    //         const pages = Math.ceil(numberOfNotes/notesAllowed);
+    //         console.log('pages', pages);
           
-            let currentPage = 1; //state
+    //         let currentPage = this.state.currentPage; //state
           
-            if(pages > 1) {
-                if(click === 'right' && currentPage < pages) {
-                  notesBegin += notesAllowed; //set to state
-                  notesEnd += notesAllowed; 
-                  currentPage += 1;  
-                } else if (click === 'left' && currentPage > 1) {
-                  notesBegin -= notesAllowed;
-                  notesEnd -= notesAllowed;
-                  currentPage -= 1; 
-                } else { return null }
-            } else {
-                return null; 
-            }
+    //         if(pages > 1) {
+    //             if(click === 'right' && currentPage < pages) {
+    //               notesBegin += notesAllowed; //set to state
+    //               notesEnd += notesAllowed; 
+    //               currentPage += 1;  
+    //             } else if (click === 'left' && currentPage > 1) {
+    //               notesBegin -= notesAllowed;
+    //               notesEnd -= notesAllowed;
+    //               currentPage -= 1; 
+    //             } else { return null }
+    //         } else {
+    //             return null; 
+    //         }
           
-            console.log('notesBegin', notesBegin);
-            console.log('notesEnd', notesEnd);
-            console.log('currentPage', currentPage);
-          }
+    //         console.log('notesBegin', notesBegin);
+    //         console.log('notesEnd', notesEnd);
+    //         console.log('currentPage', currentPage);
+    //       }
           
-          console.log(pagination());
-    }
+    //       console.log(pagination());
+    // }
 
     searchHandler = event => {
         const notes = this.props.notes.filter(note => {
@@ -101,7 +106,7 @@ class Notes extends React.Component {
                                     return (
                                         <NavLink to={`/note/${note.id}`} className='note-container' key={note.id}>
                                             <h3>{note.title}</h3>
-                                            <p>{note.content}</p>
+                                            <pre>{note.content}</pre>
                                         </NavLink>
                                     )
                                 })
@@ -110,7 +115,7 @@ class Notes extends React.Component {
                                     return (
                                         <NavLink to={`/note/${note.id}`} className='note-container' key={note.id}>
                                             <h3>{note.title}</h3>
-                                            <p>{note.content}</p>
+                                            <div dangerouslySetInnerHTML={{__html: this.markdownConverter.makeHtml(note.content + " ")}}></div>
                                         </NavLink>
                                     )
                                 })
