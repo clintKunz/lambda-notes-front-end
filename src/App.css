@@ -160,4 +160,7 @@ button {
     margin: 5px 15px; 
 }
 
+.main-view .note-content {
+    overflow-wrap: break-word; 
+}
 

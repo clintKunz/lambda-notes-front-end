@@ -106,7 +106,7 @@ class Notes extends React.Component {
                                     return (
                                         <NavLink to={`/note/${note.id}`} className='note-container' key={note.id}>
                                             <h3>{note.title}</h3>
-                                            <pre>{note.content}</pre>
+                                            <div className="note-content">{note.content}</div>
                                         </NavLink>
                                     )
                                 })

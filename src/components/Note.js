@@ -37,7 +37,7 @@ class Note extends React.Component {
                     <NavLink to={`/note/${this.state.id}/delete`} className="note-links">delete</NavLink>
                 </div>
                 <h2>{this.state.title}</h2>
-                <p>{this.state.content}</p>
+                <div className='note-content'>{this.state.content}</div>
                 <Route path='/note/:id/delete' render={props => ( <DeleteNote {...props} deleteNote={this.props.deleteNote} /> )} />
             </div>
         )
