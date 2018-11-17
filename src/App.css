@@ -161,6 +161,10 @@ button {
 }
 
 .main-view .note-content {
-    overflow-wrap: break-word; 
+    white-space: pre-wrap; 
+}
+
+.notes-container .note-container {
+    white-space: pre-wrap;
 }
 
