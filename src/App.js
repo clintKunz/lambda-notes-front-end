@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SideBar from './components/SideBar';
+import TopBar from './components/TopBar';
 import { Route } from 'react-router-dom';
 import Notes from './components/Notes';
 import Note from './components/Note';
@@ -43,8 +44,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* SideBar always visible */}
+        {/* SideBar visible when view port > 600px */}
         <SideBar notes={this.props.notes} />
+        {/* TopBar visible < 600px */}
+        <TopBar notes={this.props.notes} />
         {/* Routes based on SideBar navigations or main-view navigations - note, edit, delete */}
         {/* main-view with all notes */}
         <Route exact path='/' component={Notes} />
