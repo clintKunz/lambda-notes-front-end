@@ -17,6 +17,7 @@
 
 @media (max-width: 600px) {
     .App {
+        max-width: 100%; 
         display: block; 
     }
 }
@@ -52,10 +53,13 @@ button {
 
 /* topbar styling */
 .top-bar {
+    display: flex; 
+    flex-direction: column;  
+    align-items: center;
     background-color: #D3D2D3;
     color: #414141;
-    padding: 0 20px;
-    border: 1px solid #B7B7B7;
+    padding: 0 10px;
+    border-top: 1px solid #B7B7B7;
 }
 
 @media (min-width:599px) {
@@ -72,10 +76,30 @@ button {
     border: 1px solid #B7B7B7;
 }
 
+@media (max-width: 600px) {
+    .main-view {
+        width: 100%;
+        padding: 0 0 0 0px;
+        border: 0; 
+        border-top: 1px solid #B7b7b7; 
+    }
+
+    .main-view h2 {
+        margin-left: 25px; 
+    }
+}
+
 /* notes */
 .main-view .notes-container {
     display: flex; 
     flex-wrap: wrap;
+    justify-content: center; 
+}
+
+@media (max-width: 600px) {
+    .main-view .note-container {
+        
+    }
 }
 
 .main-view .notes-container .note-container {
@@ -101,6 +125,17 @@ button {
     justify-content: space-between;
     margin:  5px 40px 0 10px;
 } 
+
+@media (max-width: 600px) {
+    .main-view .search-bar-container {
+        margin: 10px auto;
+        justify-content: center;
+    }
+
+    .main-view .search-bar-container .search-bar {
+        margin-left: 15px; 
+    }
+}
 
 .main-view .search-bar-container .search-bar {
     width: 165px;
