@@ -79,12 +79,13 @@ button {
 @media (max-width: 600px) {
     .main-view {
         width: 100%;
-        padding: 0 0 0 0px;
+        height: 100%; 
+        padding: 0 0 50px 0px;
         border: 0; 
         border-top: 1px solid #B7b7b7; 
     }
 
-    .main-view h2 {
+    .main-view h2, .main-view input, .main-view .text-body, .main-view button, .main-view .note-content {
         margin-left: 25px; 
     }
 }
@@ -94,12 +95,6 @@ button {
     display: flex; 
     flex-wrap: wrap;
     justify-content: center; 
-}
-
-@media (max-width: 600px) {
-    .main-view .note-container {
-        
-    }
 }
 
 .main-view .notes-container .note-container {
@@ -123,7 +118,7 @@ button {
     display: flex;
     align-items: center;  
     justify-content: space-between;
-    margin:  5px 40px 0 10px;
+    margin:  5px 20px 0 20px;
 } 
 
 @media (max-width: 600px) {
@@ -173,7 +168,7 @@ button {
 
 .main-view .text-body {
     height: 340px; 
-    width: 95%;
+    width: 85%;
     margin-bottom: 10px; 
     padding: 10px;
     border-radius: 3px; 
@@ -184,6 +179,7 @@ button {
 .main-view .note-nav {
     display: flex; 
     justify-content: flex-end;
+    padding-right: 10px; 
 }
 
 .main-view .note-nav .note-links {
