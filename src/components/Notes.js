@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchNotes, notesUpdated, sortNotes } from '../actions';
 import showdown from 'showdown';
+import PropTypes from 'prop-types';
 
 class Notes extends React.Component {
     constructor() {
@@ -134,6 +135,10 @@ class Notes extends React.Component {
         }
     }
 
+}
+
+Notes.propTypes = {
+    filteredNotes: PropTypes.object,
 }
 
 const mapStateToProps = state => {
