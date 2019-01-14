@@ -138,7 +138,8 @@ class Notes extends React.Component {
 }
 
 Notes.propTypes = {
-    filteredNotes: PropTypes.object,
+    filteredNotes: PropTypes.array,
+    
 }
 
 const mapStateToProps = state => {
